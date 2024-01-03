@@ -1,14 +1,4 @@
-<?php include 'header.php'; ?>
-
-
-
-<?php include 'nav.php'; ?>
-
-
-
-<?php include 'sidebar.php'; ?>
-
-
+<?php include 'layouts/top.php'; ?>
 
 <div class="main-content">
     <section class="section">
@@ -65,4 +55,4 @@
     </section>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include 'layouts/footer.php'; ?>
