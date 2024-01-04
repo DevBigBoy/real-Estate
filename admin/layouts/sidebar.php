@@ -1,10 +1,10 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.php">Admin Panel</a>
+            <a href="dashboard.php">Admin Panel</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.php"></a>
+            <a href="dashboard.php"></a>
         </div>
 
         <ul class="sidebar-menu">

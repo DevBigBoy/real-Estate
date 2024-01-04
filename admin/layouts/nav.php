@@ -15,7 +15,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li><a class="dropdown-item" href="profile.php"><i class="far fa-user"></i> Edit Profile</a></li>
-                <li><a class="dropdown-item" href="login.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li><a class="dropdown-item" href="<?php echo ADMIN_URL; ?>logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             </ul>
         </li>
     </ul>
