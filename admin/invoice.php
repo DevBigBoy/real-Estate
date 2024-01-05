@@ -82,13 +82,13 @@
                 </div>
                 <hr class="about-print-button">
                 <div class="text-md-right">
-                    <a href="javascript:window.print();"
-                        class="btn btn-warning btn-icon icon-left text-white print-invoice-button"><i
-                            class="fas fa-print"></i> Print</a>
+                    <a href="javascript:window.print();" class="btn btn-warning btn-icon icon-left text-white print-invoice-button"><i class="fas fa-print"></i> Print</a>
                 </div>
             </div>
         </div>
     </section>
 </div>
 
-<?php include 'footer.php'; ?>
+<?php
+include 'layouts/footer.php';
+?>

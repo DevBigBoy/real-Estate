@@ -54,13 +54,14 @@ if (isset($_POST['form_login'])) {
                         <?php
                         if (isset($error_message)) {
                         ?><script>
-                                alert("<?php echo $error_message; ?>")
-                            </script><?php
+                        alert("<?php echo $error_message; ?>")
+                        </script><?php
                                     }
                                         ?>
                         <form method="POST" action="">
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email Address" value="" autofocus>
+                                <input type="email" class="form-control" name="email" placeholder="Email Address"
+                                    value="" autofocus>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password">
@@ -72,7 +73,7 @@ if (isset($_POST['form_login'])) {
                             </div>
                             <div class="form-group">
                                 <div>
-                                    <a href="forget-password.php">
+                                    <a href="<?Php echo ADMIN_URL; ?>forget-password.php">
                                         Forget Password?
                                     </a>
                                 </div>
