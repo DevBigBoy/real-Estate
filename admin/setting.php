@@ -1,8 +1,8 @@
-<?php include 'layouts/top.php'; ?>
+<?php
 
+include 'layouts/top.php';
 
-
-
+?>
 
 
 <div class="main-content">
@@ -20,7 +20,7 @@
                                     <div class="form-group mb-3">
                                         <label>Existing Photo</label>
                                         <div>
-                                            <img src="uploads/logo.png" alt="" class="w_100">
+                                            <img src="<?php echo BASE_URL; ?>uploads/logo.png" alt="" class="w_100">
                                         </div>
                                     </div>
                                     <div class="form-group mb-3">
@@ -37,15 +37,12 @@
                                     </div>
                                     <div class="form-group mb-3">
                                         <label>Subheading</label>
-                                        <input type="text" class="form-control" name=""
-                                            value="You will get some awesome services from us">
+                                        <input type="text" class="form-control" name="" value="You will get some awesome services from us">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label>Status</label>
                                         <div class="toggle-container">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Show" data-off="Hide"
-                                                data-onstyle="success" data-offstyle="danger" name="" value="Show"
-                                                checked>
+                                            <input type="checkbox" data-toggle="toggle" data-on="Show" data-off="Hide" data-onstyle="success" data-offstyle="danger" name="" value="Show" checked>
                                         </div>
                                     </div>
                                 </div>

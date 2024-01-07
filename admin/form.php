@@ -1,4 +1,8 @@
-<?php include 'layouts/top.php'; ?>
+<?php
+
+include 'layouts/top.php';
+
+?>
 
 
 <div class="main-content">

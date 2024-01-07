@@ -7,6 +7,7 @@ if (!isset($_SESSION['admin'])) {
 
 if (isset($_POST['form_update'])) {
     try {
+        // update name and email
         if ($_POST['f_name'] == '') {
             throw new Exception("First Name can not be empty");
         }
@@ -22,6 +23,44 @@ if (isset($_POST['form_update'])) {
 
         $statement = $pdo->prepare("UPDATE users set Fname=?, Lname=?, email=? WHERE id=?");
         $statement->execute([$_POST['f_name'], $_POST['l_name'], $_POST['email'], $_SESSION['admin']['id']]);
+
+        // Update Password
+        if ($_POST['password'] != '' || $_POST['retype_password'] != '') {
+            if ($_POST['password'] != $_POST['retype_password']) {
+                throw new Exception("Password does not match");
+            } else {
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $statement = $pdo->prepare("UPDATE users SET password=? WHERE id=?");
+                $statement->execute([$password, $_SESSION['admin']['id']]);
+            }
+        }
+
+        // Update  photo
+        $path = $_FILES['photo']['name'];
+        $path_tmp = $_FILES['photo']['tmp_name'];
+
+        if ($path != '') {
+            $extension = pathinfo($path, PATHINFO_EXTENSION);
+            $filename = time() . "." . $extension;
+
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mime = finfo_file($finfo, $path_tmp);
+
+
+            if ($mime == 'image/jpeg' || $mime == 'image/png') {
+                if ($_SESSION['admin']['photo'] != '') {
+                    unlink('../uploads/' . $_SESSION['admin']['photo']);
+                }
+                move_uploaded_file($path_tmp, '../uploads/' . $filename);
+                $statement = $pdo->prepare("UPDATE users SET photo=? WHERE id=?");
+                $statement->execute([$filename, $_SESSION['admin']['id']]);
+                $_SESSION['admin']['photo'] = $filename;
+            } else {
+                throw new Exception("Please upload a valid photo");
+            }
+        }
+
+
 
         $success_message = 'profile data is updated successfully!';
 
@@ -87,7 +126,7 @@ if (isset($_POST['form_update'])) {
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label">Password</label>
-                                            <input type="password" class="form-control" name="new_password">
+                                            <input type="password" class="form-control" name="password">
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label">Retype Password</label>
