@@ -1,7 +1,7 @@
 <?php
 
 $dbhost = 'localhost';
-$dbname = 'admin_panel_php';
+$dbname = 'real_estate_project';
 $dbuser = 'root';
 $dbpass = '';
 

@@ -16,15 +16,15 @@ if (isset($_POST['form_forget_password'])) {
             throw new Exception("Email is invalid");
         }
 
-        $query = $pdo->prepare("SELECT * FROM users WHERE email=? AND role=?");
-        $query->execute([$_POST['email'], 'admin']);
+        $query = $pdo->prepare("SELECT * FROM admins WHERE email=?");
+        $query->execute([$_POST['email']]);
         $total = $query->rowCount();
         if (!$total) {
             throw new Exception("Email is Not found");
         }
 
         $token = time();
-        $statement = $pdo->prepare("UPDATE users SET token=? WHERE email=?");
+        $statement = $pdo->prepare("UPDATE admins SET token=? WHERE email=?");
         $statement->execute([$token, $_POST['email']]);
 
         $email_message = "Please click on the following link in order to reset the password: ";

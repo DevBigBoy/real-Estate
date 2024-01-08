@@ -21,7 +21,7 @@ if (isset($_POST['form_update'])) {
             throw new Exception();
         }
 
-        $statement = $pdo->prepare("UPDATE users set Fname=?, Lname=?, email=? WHERE id=?");
+        $statement = $pdo->prepare("UPDATE admins set Fname=?, Lname=?, email=? WHERE id=?");
         $statement->execute([$_POST['f_name'], $_POST['l_name'], $_POST['email'], $_SESSION['admin']['id']]);
 
         // Update Password
@@ -30,7 +30,7 @@ if (isset($_POST['form_update'])) {
                 throw new Exception("Password does not match");
             } else {
                 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $statement = $pdo->prepare("UPDATE users SET password=? WHERE id=?");
+                $statement = $pdo->prepare("UPDATE admins SET password=? WHERE id=?");
                 $statement->execute([$password, $_SESSION['admin']['id']]);
             }
         }
@@ -52,7 +52,7 @@ if (isset($_POST['form_update'])) {
                     unlink('../uploads/' . $_SESSION['admin']['photo']);
                 }
                 move_uploaded_file($path_tmp, '../uploads/' . $filename);
-                $statement = $pdo->prepare("UPDATE users SET photo=? WHERE id=?");
+                $statement = $pdo->prepare("UPDATE admins SET photo=? WHERE id=?");
                 $statement->execute([$filename, $_SESSION['admin']['id']]);
                 $_SESSION['admin']['photo'] = $filename;
             } else {
@@ -87,14 +87,14 @@ if (isset($_POST['form_update'])) {
                     <div class="card">
                         <div class="card-body">
                             <?php if (isset($erro_message)) { ?>
-                                <script>
-                                    alert("<?php echo $erro_message; ?>")
-                                </script>
+                            <script>
+                            alert("<?php echo $erro_message; ?>")
+                            </script>
                             <?php }
                             if (isset($success_message)) { ?>
-                                <script>
-                                    alert("<?php echo $success_message; ?>");
-                                </script>
+                            <script>
+                            alert("<?php echo $success_message; ?>");
+                            </script>
                             <?php }   ?>
 
                             <form action="" method="post" enctype="multipart/form-data">
@@ -102,10 +102,12 @@ if (isset($_POST['form_update'])) {
                                     <div class="col-md-3">
 
                                         <?php if ($_SESSION['admin']['photo'] == '') : ?>
-                                            <img src="<?php echo BASE_URL; ?>uploads/default.png" alt="" class="profile-photo w_100_p">
+                                        <img src="<?php echo BASE_URL; ?>uploads/default.png" alt=""
+                                            class="profile-photo w_100_p">
                                         <?php else : ?>
 
-                                            <img src="<?php echo BASE_URL; ?>uploads/<?= $_SESSION['admin']['photo']; ?>" alt="" class="profile-photo w_100_p">
+                                        <img src="<?php echo BASE_URL; ?>uploads/<?= $_SESSION['admin']['photo']; ?>"
+                                            alt="" class="profile-photo w_100_p">
 
                                         <?php endif; ?>
 
@@ -114,15 +116,18 @@ if (isset($_POST['form_update'])) {
                                     <div class="col-md-9">
                                         <div class="mb-4">
                                             <label class="form-label">First Name *</label>
-                                            <input type="text" class="form-control" name="f_name" value="<?= $_SESSION['admin']['Fname']  ?>">
+                                            <input type="text" class="form-control" name="f_name"
+                                                value="<?= $_SESSION['admin']['Fname']  ?>">
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label">Last Name *</label>
-                                            <input type="text" class="form-control" name="l_name" value="<?= $_SESSION['admin']['Lname']  ?>">
+                                            <input type="text" class="form-control" name="l_name"
+                                                value="<?= $_SESSION['admin']['Lname']  ?>">
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label">Email *</label>
-                                            <input type="text" class="form-control" name="email" value="<?= $_SESSION['admin']['email']  ?>">
+                                            <input type="text" class="form-control" name="email"
+                                                value="<?= $_SESSION['admin']['email']  ?>">
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label">Password</label>
@@ -134,7 +139,8 @@ if (isset($_POST['form_update'])) {
                                         </div>
                                         <div class="mb-4">
                                             <label class="form-label"></label>
-                                            <button type="submit" class="btn btn-primary" name="form_update">Update</button>
+                                            <button type="submit" class="btn btn-primary"
+                                                name="form_update">Update</button>
                                         </div>
                                     </div>
                                 </div>

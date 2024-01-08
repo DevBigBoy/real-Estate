@@ -1,7 +1,7 @@
 <?php
 include 'layouts/top.php';
 
-$statement = $pdo->prepare("SELECT * FROM users WHERE email=? AND token=?");
+$statement = $pdo->prepare("SELECT * FROM admins WHERE email=? AND token=?");
 $statement->execute([$_REQUEST['email'], $_REQUEST['token']]);
 $total = $statement->rowCount();
 
@@ -21,7 +21,7 @@ if (isset($_POST['form_reset_password'])) {
         }
 
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $statement = $pdo->prepare("UPDATE users SET token=?, password=? WHERE email=? AND token=?");
+        $statement = $pdo->prepare("UPDATE admins SET token=?, password=? WHERE email=? AND token=?");
         $statement->execute(['', $password, $_REQUEST['email'], $_REQUEST['token']]);
 
         header('location:' . ADMIN_URL . 'login.php?msg=success');
@@ -43,16 +43,18 @@ if (isset($_POST['form_reset_password'])) {
                     </div>
                     <div class="card-body card-body-auth">
                         <?php if (isset($error_message)) { ?>
-                            <script>
-                                alert("<?php echo $error_message; ?>")
-                            </script>
+                        <script>
+                        alert("<?php echo $error_message; ?>")
+                        </script>
                         <?php } ?>
                         <form method="POST" action="">
                             <div class="form-group">
-                                <input type="password" class="form-control" name="password" placeholder="Password" value="" autofocus autocomplete="off">
+                                <input type="password" class="form-control" name="password" placeholder="Password"
+                                    value="" autofocus autocomplete="off">
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control" name="retype_password" placeholder="Retype Password" value="">
+                                <input type="password" class="form-control" name="retype_password"
+                                    placeholder="Retype Password" value="">
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-lg w_100_p" name="form_reset_password">

@@ -18,8 +18,8 @@ if (isset($_POST['form_login'])) {
             throw new Exception("Password can not be empty");
         }
 
-        $query = $pdo->prepare("SELECT * FROM users WHERE email=? AND role=?");
-        $query->execute([$_POST['email'], 'admin']);
+        $query = $pdo->prepare("SELECT * FROM admins WHERE email=? ");
+        $query->execute([$_POST['email']]);
         $total = $query->rowCount();
 
         if (!$total) {
@@ -54,14 +54,13 @@ if (isset($_POST['form_login'])) {
                         <?php
                         if (isset($error_message)) {
                         ?><script>
-                        alert("<?php echo $error_message; ?>")
-                        </script><?php
+                                alert("<?php echo $error_message; ?>")
+                            </script><?php
                                     }
                                         ?>
                         <form method="POST" action="">
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email Address"
-                                    value="" autofocus>
+                                <input type="email" class="form-control" name="email" placeholder="Email Address" value="" autofocus>
                             </div>
                             <div class="form-group">
                                 <input type="password" class="form-control" name="password" placeholder="Password">
