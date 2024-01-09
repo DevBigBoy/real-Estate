@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteRule  ^select-user$                    select-user.php                      [NC,L]
+RewriteRule  ^customer-registration$          customer-registration.php            [NC,L]
+RewriteRule  ^customer-login$                 customer-login.php                   [NC,L]
+RewriteRule  ^customer-forget-password$       customer-forget-password.php         [NC,L]
+RewriteRule  ^customer-dashboard$             customer-dashboard.php               [NC,L]
+RewriteRule  ^customer-logout$                customer-logout.php                  [NC,L]
+RewriteRule  ^customer-edit-profile$          customer-edit-profile.php            [NC,L]
+RewriteRule  ^customer-wishlist$              customer-wishlist.php                [NC,L]
+RewriteRule  ^customer-messages$              customer-messages.php                [NC,L]
+RewriteRule  ^customer-message-create$        customer-message-create.php          [NC,L]
+RewriteRule  ^customer-message/(.*)$/?$       customer-message.php?id=$1           [NC,L]

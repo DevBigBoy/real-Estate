@@ -114,7 +114,7 @@
     <i class="fas fa-angle-up"></i>
 </div>
 
-<script src="js/custom.js"></script>
+<script src="<?php echo BASE_URL; ?>dist/js/custom.js"></script>
 </body>
 
 </html>

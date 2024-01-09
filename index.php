@@ -4,7 +4,7 @@ include 'header.php';
 
 ?>
 
-<div class="slider" style="background-image: url(uploads/banner-home.jpg)">
+<div class="slider" style="background-image: url(<?php echo BASE_URL; ?>uploads/banner-home.jpg)">
     <div class="bg"></div>
     <div class="container">
         <div class="row">
